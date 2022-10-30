@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            background-color: lightgray;
+            font-size: 2vh;
+            font-family: monospace;
+            text-align: center;
+            position: relative
+        }
+    </style>
+    <script>
+        function calcul() {
+            var a = parseInt(document.getElementById("un").value)
+            console.log(a);
+            var b = parseInt(document.getElementById("deux").value)
+            console.log(b);
+            var op = document.getElementById("select")
+            var res = 0
+            var operator = op.options[op.selectedIndex].value;
+            console.log(operator);
+            res = 0
+            if (document.getElementById("tryme").onclick) {
+                if (a >= 0 && b >= 0 && a != null && b != null) {
+                    if (operator == "+") {
+                        console.log(a + b);
+                        res = a + b;
+                    }
+                    if (operator == "-") {
+                        console.log(a - b);
+                        res = a - b;
+                    }
+                    if (operator == "*") {
+                        console.log(a * b);
+                        res = a * b;
+                    }
+                    if (operator == "/") {
+                        console.log("/");
+                        if (b == 0) {
+                            alert("It's over 9000 !")
+                            console.log("It's over 9000 !")
+                        }
+                        res = a / b;
+                    }
+                    if (operator == "%") {
+                        console.log(a % b);
+                        if (b == 0) {
+                            alert("It's over 9000 !")
+                            console.log("It's over 9000 !")
+                        }
+                        res = a % b;
+                    }
+                }
+                else {
+                    alert("Error :(")
+                }
+                alert(res)
+                setTimeout(sayalert, 30000)
+                function sayalert() {
+                    alert("Please, use me...")
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="un">
+    <select id="select">
+        <option value="+">
+            +
+        </option>
+        <option value="-">
+            -
+        </option>
+        <option value="*">
+            *
+        </option>
+        <option value="/">
+            /
+        </option>
+        <option value="%">
+            %
+        </option>
+    </select>
+    <input type="text" id="deux">
+    <input type="submit" value="Try me !" id="tryme" onclick="calcul()">
+</body>
+</html>

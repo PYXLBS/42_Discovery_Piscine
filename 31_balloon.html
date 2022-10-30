@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+        body {
+          display: flex;
+          height: 100vh;
+          flex-direction: column-reverse;
+          justify-content: center;
+          background-color: lightgray;
+        }
+        .balloon { 
+          width: 200px;
+          height: 200px;
+          margin: 0 auto 10px;
+          border-radius:50%;
+        } 
+        .red {
+          background-color: red;
+        }
+        .green {
+          background-color: green;
+        }
+        .blue {
+          background-color: blue;
+        }
+      </style>
+      <script>
+        function changeColor(change)
+        {
+          if(change.classList.contains("red"))
+            {
+              change.classList.remove("red");
+              change.classList.add("green");
+            }
+            else if(change.classList.contains("green"))
+            {
+              change.classList.remove("green");
+              change.classList.add("blue");
+            }
+            else {
+              change.classList.remove("blue");
+              change.classList.add("red");
+            }
+            return false;
+        }
+        function handleClick(change)
+        {
+          changeColor(change);
+          if (change.offsetWidth < "420")
+          {
+            change.style.width = (change.offsetWidth + 10) + "px";
+            change.style.height = (change.offsetHeight + 10) + "px";
+          }
+          else {
+            change.style.width = "200px";
+            change.style.height = "200px";
+          }
+        }
+        function onHover(change)
+        {
+          invertColor(change);
+          change.style.width = Math.max(200, change.offsetWidth - 5) + "px";
+          change.style.height = Math.max(200, change.offsetHeight - 5) + "px";
+        }
+        function invertColor(change)
+        {
+          if(change.classList.contains("blue"))
+          {
+            change.classList.remove("blue");
+            change.classList.add("green");
+          }
+          else if(change.classList.contains("green"))
+          {
+            change.classList.remove("green");
+            change.classList.add("red");
+          }
+          else {
+            change.classList.remove("red");
+            change.classList.add("blue");
+          }
+          return false;
+        }
+    </script>	
+    </head>
+    <body>
+      <div class="balloon red" onclick="handleClick(this);" onmouseleave="onHover(this)">
+      </div> 
+    </body>
+  </html>
